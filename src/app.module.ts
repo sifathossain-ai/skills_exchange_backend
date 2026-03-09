@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SkillsModule } from './modules/skills/skills.module';
+import { User } from './entities/user-entity';
+import { Skill } from './entities/skill-entity';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -15,11 +18,12 @@ import { SkillsModule } from './modules/skills/skills.module';
       host: process.env.DB_HOST,
       port: 5432,
       username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      entities: [],
+      password: '@sifat143#',
+      database: 'skills-exchange',
+      entities: [Skill, User],
       synchronize: true,
     }),
+    AuthModule,
     SkillsModule,
   ],
   controllers: [AppController],
