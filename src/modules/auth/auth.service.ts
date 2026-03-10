@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   ConflictException,
@@ -66,6 +68,24 @@ export class AuthService {
       user: result,
       ...tokens,
     };
+  }
+
+  async refreshToken(refreshToken: string) {
+    try {
+      const payload = await this.jwtService.verify(refreshToken, {
+        secret: process.env.REFRESH_SECRET,
+      });
+
+      const userExist = await this.usersRepository.findOne({
+        where: { id: payload.sub },
+      });
+      if (!userExist) throw new UnauthorizedException('Invalid Token!');
+
+      const accessToken = this.generateAccessToken(userExist);
+      return { accessToken };
+    } catch {
+      throw new UnauthorizedException('Invalid Token');
+    }
   }
 
   private generateTokens(user: User) {
