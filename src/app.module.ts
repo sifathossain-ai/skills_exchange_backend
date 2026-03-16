@@ -7,6 +7,7 @@ import { SkillsModule } from './modules/skills/skills.module';
 import { User } from './entities/user-entity';
 import { Skill } from './entities/skill-entity';
 import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AuthModule } from './modules/auth/auth.module';
       entities: [Skill, User],
       synchronize: true,
     }),
+    UsersModule,
     AuthModule,
     SkillsModule,
   ],

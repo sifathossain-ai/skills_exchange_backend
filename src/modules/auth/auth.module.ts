@@ -5,11 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user-entity';
 import { SkillsModule } from '../skills/skills.module';
 import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
     SkillsModule,
+    PassportModule,
     JwtModule.register({}),
   ],
   controllers: [AuthController],

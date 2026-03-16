@@ -70,10 +70,22 @@ export class AuthService {
     };
   }
 
+  async getUserById(userId: number) {
+    const user = await this.usersRepository.findOne({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('User Not Found!');
+    }
+    const { password, ...result } = user;
+    return result;
+  }
+
   async refreshToken(refreshToken: string) {
     try {
       const payload = await this.jwtService.verify(refreshToken, {
-        secret: process.env.REFRESH_SECRET,
+        secret: 'refresh_secret_key',
       });
 
       const userExist = await this.usersRepository.findOne({
