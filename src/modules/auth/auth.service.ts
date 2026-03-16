@@ -16,6 +16,7 @@ import { LoginDto } from './dtos/login.dto';
 
 @Injectable()
 export class AuthService {
+  getUserByID: any;
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
@@ -116,7 +117,7 @@ export class AuthService {
 
     return this.jwtService.sign(payload, {
       secret: process.env.ACCESS_SECRET,
-      expiresIn: '1m',
+      expiresIn: '5m',
     });
   }
 
