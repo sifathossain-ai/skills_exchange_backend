@@ -14,30 +14,6 @@
 <img src="https://img.shields.io/badge/Database-PostgreSQL-blue.svg" alt="Database" />
 </p>
 
----
-
-## Project setup
-
-$ npm install
-
----
-
-## Compile and run the project
-
-# development
-
-$ npm run start
-
-# watch mode
-
-$ npm run start:dev
-
-# production mode
-
-$ npm run start:prod
-
----
-
 ## 📖 Overview
 
 Developed by **Sifat Hossain**, this platform is designed to facilitate skill sharing within campus communities without the need for monetary transactions. It operates on a strict **knowledge-barter logic**, allowing students to trade expertise directly.
@@ -74,4 +50,24 @@ The system is built with **NestJS** and follows a modular architecture for scala
 
 Ensure you have [Node.js](https://nodejs.org/) and [PostgreSQL](https://www.postgresql.org/) installed.
 
-### Installation
+# Installation
+
+## Project setup
+
+$ npm install
+
+## Compile and run the project
+
+### development
+
+$ npm run start
+
+### watch mode
+
+$ npm run start:dev
+
+### production mode
+
+$ npm run start:prod
+
+---
