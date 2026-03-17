@@ -54,10 +54,13 @@ Ensure you have [Node.js](https://nodejs.org/) and [PostgreSQL](https://www.post
 
 ## Project setup
 
+```bash
 $ npm install
+```
 
 ## Compile and run the project
 
+```bash
 ### development
 
 $ npm run start
@@ -69,5 +72,4 @@ $ npm run start:dev
 ### production mode
 
 $ npm run start:prod
-
----
+```
