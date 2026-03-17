@@ -13,10 +13,13 @@ import { ExchangeSkill } from './exchange-skill-entity';
 @Entity()
 export class Skill {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column({ length: 50 })
   teachingSkill: string;
+
+  @Column()
+  skillImage: string;
 
   @Column('simple-array')
   wantedSkills: string[];

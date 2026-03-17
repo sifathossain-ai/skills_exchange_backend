@@ -8,6 +8,7 @@ import { User } from './entities/user-entity';
 import { Skill } from './entities/skill-entity';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { ExchangeSkill } from './entities/exchange-skill-entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { UsersModule } from './modules/users/users.module';
       username: process.env.DB_USER,
       password: '@sifat143#',
       database: 'skills-exchange',
-      entities: [Skill, User],
+      entities: [Skill, User, ExchangeSkill],
       synchronize: true,
     }),
     UsersModule,

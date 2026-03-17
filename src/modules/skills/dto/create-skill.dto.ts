@@ -1,10 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { IsNotEmpty, IsString, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUrl,
+  MinLength,
+} from 'class-validator';
 
 export class CreateSkillDto {
-  @IsNotEmpty({ message: 'Name is required' })
-  @IsString({ message: 'Name must be a string' })
-  name: string;
+  @IsNotEmpty({ message: 'Teaching skill name is required' })
+  @IsString({ message: 'Teaching skill name must be a string' })
+  teachingSkill: string;
+
+  @IsNotEmpty({ message: 'Skill thumbnail is required' })
+  @IsString({ message: 'Skill thumbnail must be a url string' })
+  @IsUrl()
+  skillImage: string;
+
+  @IsString({ message: 'Wanted skill must be a string' })
+  @IsOptional()
+  wantedSkills: string[];
 
   @IsString({ message: 'Description must be a string' })
   @MinLength(5, { message: 'Must ne at least 5 ch more' })

@@ -3,7 +3,7 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from './gaurds/jwt-guard';
 
 @Controller('users')
 export class UsersController {
@@ -14,7 +14,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@CurrentUser() user: any) {
     return user;

@@ -28,7 +28,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   campusId: string;
 
   @OneToMany(() => Skill, (skill) => skill.creator)
