@@ -2,11 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Skill } from './skill-entity';
+import { ExchangeSkill } from './exchange-skill-entity';
 
 export enum UserRole {
   User = 'user',
@@ -15,7 +16,7 @@ export enum UserRole {
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
@@ -27,8 +28,14 @@ export class User {
   @Column()
   password: string;
 
-  @ManyToMany(() => Skill, (skill) => skill.users)
-  skills: Skill[];
+  @Column()
+  campusId: string;
+
+  @OneToMany(() => Skill, (skill) => skill.creator)
+  posts: Skill[];
+
+  @OneToMany(() => ExchangeSkill, (req) => req.proposer)
+  sentRequests: ExchangeSkill[];
 
   @Column({
     type: 'enum',
