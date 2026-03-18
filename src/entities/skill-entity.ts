@@ -34,7 +34,7 @@ export class Skill {
   isActive: boolean;
 
   @ManyToOne(() => User, (user) => user.posts)
-  creator: User[];
+  creator: User;
 
   @OneToMany(() => ExchangeSkill, (req) => req.post)
   request: ExchangeSkill[];

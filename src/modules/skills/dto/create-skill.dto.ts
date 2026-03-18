@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
+  IsArray,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -17,7 +18,7 @@ export class CreateSkillDto {
   @IsUrl()
   skillImage: string;
 
-  @IsString({ message: 'Wanted skill must be a string' })
+  @IsArray({ message: 'Wanted skills must be an array of strings' })
   @IsOptional()
   wantedSkills: string[];
 
