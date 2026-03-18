@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Skill } from 'src/entities/skill-entity';
 import { Repository } from 'typeorm';
@@ -30,12 +30,25 @@ export class SkillsService {
     });
   }
 
-  async findMyPost(user: User): Promise<Skill[]> {
+  async findMySkill(user: User): Promise<Skill[]> {
     return await this.skillRepository.find({
       where: {
         creator: { id: user.id },
       },
       order: { createdDate: 'DESC' },
     });
+  }
+
+  async remove(id: string, user: User): Promise<void> {
+    const result = await this.skillRepository.delete({
+      id: id,
+      creator: { id: user.id },
+    });
+
+    if (result.affected === 0) {
+      throw new NotFoundException(
+        `Skill with ID ${id} not found or you don't have permission to delete it`,
+      );
+    }
   }
 }
