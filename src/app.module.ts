@@ -9,9 +9,16 @@ import { Skill } from './entities/skill-entity';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ExchangeSkill } from './entities/exchange-skill-entity';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 3,
+      },
+    ]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
