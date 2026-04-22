@@ -44,4 +44,5 @@ export class Skill {
 
   @UpdateDateColumn()
   updatedDate: Date;
+  user: any;
 }

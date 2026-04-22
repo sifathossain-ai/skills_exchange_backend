@@ -71,7 +71,7 @@ export class AuthService {
     };
   }
 
-  async getUserById(userId: number) {
+  async getUserById(userId: string) {
     const user = await this.usersRepository.findOne({
       where: { id: userId },
     });

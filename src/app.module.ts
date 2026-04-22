@@ -11,6 +11,7 @@ import { UsersModule } from './modules/users/users.module';
 import { ExchangeSkill } from './entities/exchange-skill-entity';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { ExchangeSkillsModule } from './modules/exchange-skills/exchange-skills.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
       entities: [Skill, User, ExchangeSkill],
       synchronize: true,
     }),
+    ExchangeSkillsModule,
     UsersModule,
     AuthModule,
     SkillsModule,
