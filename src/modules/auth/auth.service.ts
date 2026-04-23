@@ -36,6 +36,7 @@ export class AuthService {
       email: registerDto.email,
       name: registerDto.name,
       password: await bcrypt.hash(registerDto.password, 10),
+      campusId: registerDto.campusId,
       role: UserRole.User,
     });
 
