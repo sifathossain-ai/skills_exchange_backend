@@ -38,6 +38,11 @@ export class SkillsController {
     return this.skillsService.findAll();
   }
 
+  @Get(':id')
+  async findOneSkill(@Param('id') id: string) {
+    return this.skillsService.findOneSkill(id);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async removeSkill(@Param('id') id: string, @CurrentUser() user: User) {

@@ -37,6 +37,9 @@ export class ExchangeSkill {
   })
   status: ExchangeStatus;
 
+  @Column({ nullable: true })
+  contactNumber: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

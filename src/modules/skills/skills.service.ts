@@ -39,6 +39,19 @@ export class SkillsService {
     });
   }
 
+  async findOneSkill(id: string): Promise<Skill> {
+    const skill = await this.skillRepository.findOne({
+      where: { id },
+      relations: ['creator'],
+    });
+
+    if (!skill) {
+      throw new NotFoundException(`Skill with ID ${id} not found`);
+    }
+
+    return skill;
+  }
+
   async remove(id: string, user: User): Promise<void> {
     const result = await this.skillRepository.delete({
       id: id,
