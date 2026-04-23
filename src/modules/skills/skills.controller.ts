@@ -32,12 +32,12 @@ export class SkillsController {
     return this.skillsService.findMySkill(user);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('all')
   async findAll() {
     return this.skillsService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOneSkill(@Param('id') id: string) {
     return this.skillsService.findOneSkill(id);
